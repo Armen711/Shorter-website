@@ -26,6 +26,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -35,6 +36,8 @@ body {
   color: var(--grey-900);
   background: var(--white);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 img {
@@ -65,6 +68,8 @@ p {
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 24px;
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
 }
 
 .section {
@@ -146,6 +151,7 @@ p {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 .site-header .wrap {
@@ -176,6 +182,12 @@ p {
   gap: 28px;
 }
 
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
 .site-nav a {
   font-size: 14px;
   font-weight: 600;
@@ -190,6 +202,50 @@ p {
 .site-nav .btn {
   padding: 10px 20px;
   font-size: 14px;
+}
+
+.nav-cta-short {
+  display: none;
+}
+
+/* Hamburger toggle — hidden on desktop, only enters the layout at the
+   mobile breakpoint below. Kept in the DOM at all sizes so no JS is needed
+   to add/remove it. */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--black);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* Hero */
@@ -260,6 +316,7 @@ p {
 .phone img {
   border-radius: 22px;
   width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -532,6 +589,7 @@ p {
   background: var(--black);
   color: rgba(255, 255, 255, 0.7);
   padding: 56px 0 32px;
+  padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px));
 }
 
 .footer-top {
@@ -576,6 +634,10 @@ p {
 
 /* Responsive */
 @media (max-width: 900px) {
+  .hero {
+    padding: 56px 0 32px;
+  }
+
   .hero .wrap {
     grid-template-columns: 1fr;
   }
@@ -608,12 +670,165 @@ p {
     text-align: center;
   }
 
-  .site-nav a:not(.btn) {
-    display: none;
+  /* Section rhythm — desktop's 96px/88px section padding reads as huge
+     empty gaps on a phone-height viewport, so it's tightened here without
+     touching the desktop values above. */
+  .section {
+    padding: 64px 0;
+  }
+
+  .section-tight {
+    padding: 44px 0;
+  }
+
+  .waitlist-block {
+    padding: 56px 0;
+  }
+
+  .section-head {
+    margin-bottom: 36px;
+  }
+
+  /* Mobile nav: the inline link row is replaced by a hamburger-triggered
+     dropdown; the "Join the waitlist" CTA stays visible at all sizes. */
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+  }
+
+  .site-nav-links.is-open {
+    max-height: 360px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .site-nav-links a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Tap targets + iOS zoom-on-focus prevention (Safari zooms the page in
+     when a focused input's font-size is under 16px). */
+  .field input:not([type="radio"]):not([type="checkbox"]),
+  .field select {
+    font-size: 16px;
+    padding: 13px 14px;
+    min-height: 44px;
+  }
+
+  .radio-row label {
+    min-height: 44px;
+    padding: 12px 16px;
+    white-space: nowrap;
+  }
+
+  .radio-row {
+    align-items: flex-start;
+  }
+
+  /* On tablet-width single-column layouts (e.g. 768px) the form was
+     stretching edge-to-edge into oversized, ungainly inputs — cap and
+     center it like a card instead. No effect below ~520px since the
+     column is already narrower than the cap. */
+  .waitlist-form {
+    max-width: 520px;
+    margin: 0 auto;
   }
 
   .update-item {
     grid-template-columns: 1fr;
     gap: 6px;
+  }
+
+  .update-item p {
+    max-width: 560px;
+  }
+}
+
+/* Extra-narrow phones (iPhone SE / older Android) — the "Join the
+   waitlist" label wraps to two lines and collides with the logo at this
+   width, so it swaps for a shorter label instead of wrapping. */
+@media (max-width: 380px) {
+  .nav-cta-full {
+    display: none;
+  }
+
+  .nav-cta-short {
+    display: inline;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .section {
+    padding: 48px 0;
+  }
+
+  .waitlist-block {
+    padding: 44px 0;
+  }
+}
+
+/* Short-height landscape phones — trim vertical padding so the fold isn't
+   dominated by whitespace above the CTAs. */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+  .site-header .wrap {
+    height: 60px;
+  }
+
+  .hero {
+    padding: 24px 0 20px;
+  }
+
+  .hero-visual {
+    margin-top: 16px;
+  }
+
+  .phone.phone-front {
+    width: 140px;
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+
+  .waitlist-block {
+    padding: 36px 0;
+  }
+}
+
+/* Tablet landscape / small laptop (iPad, 1024px) already gets the desktop
+   grid layout above 900px — this just keeps the nav row from feeling
+   cramped right at the edge of that breakpoint. */
+@media (min-width: 901px) and (max-width: 1024px) {
+  .site-nav {
+    gap: 20px;
+  }
+
+  .site-nav-links {
+    gap: 20px;
   }
 }

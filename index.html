@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <title>Shorter — Haircuts, On Demand</title>
   <meta name="description" content="Shorter is an on-demand booking app for barbers and customers. Join the waitlist — customer or barber — for early access and founder updates." />
@@ -29,11 +29,26 @@
         <span>Shorter</span>
       </a>
       <nav class="site-nav">
-        <a href="#customer-waitlist">Customers</a>
-        <a href="#barber-waitlist">Barbers</a>
-        <a href="#updates">Founder Updates</a>
-        <a href="#about">About</a>
-        <a href="#barber-waitlist" class="btn btn-primary">Join the waitlist</a>
+        <div class="site-nav-links" id="site-nav-links">
+          <a href="#customer-waitlist">Customers</a>
+          <a href="#barber-waitlist">Barbers</a>
+          <a href="#updates">Founder Updates</a>
+          <a href="#about">About</a>
+        </div>
+        <a href="#barber-waitlist" class="btn btn-primary nav-cta">
+          <span class="nav-cta-full">Join the waitlist</span>
+          <span class="nav-cta-short">Join</span>
+        </a>
+        <button
+          type="button"
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="site-nav-links"
+          aria-label="Open menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </nav>
     </div>
   </header>
@@ -55,10 +70,10 @@
       </div>
       <div class="hero-visual">
         <div class="phone phone-back">
-          <img src="assets/images/app-barber-dashboard.png" alt="Shorter barber dashboard screen" />
+          <img src="assets/images/app-barber-dashboard.png" alt="Shorter barber dashboard screen" width="404" height="1295" loading="lazy" />
         </div>
         <div class="phone phone-front">
-          <img src="assets/images/app-customer-home.png" alt="Shorter customer home screen" />
+          <img src="assets/images/app-customer-home.png" alt="Shorter customer home screen" width="404" height="863" fetchpriority="high" />
         </div>
       </div>
     </div>

@@ -68,4 +68,55 @@ function initWaitlistForms() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", initWaitlistForms);
+// Mobile nav dropdown: toggles the collapsed link list open/closed, closes
+// on link tap, outside tap, Escape, or if the viewport is resized back up to
+// the desktop layout (where the links are always visible inline).
+function initNavToggle() {
+  var toggle = document.getElementById("nav-toggle");
+  var links = document.getElementById("site-nav-links");
+  if (!toggle || !links) return;
+
+  function closeMenu() {
+    toggle.setAttribute("aria-expanded", "false");
+    links.classList.remove("is-open");
+    toggle.setAttribute("aria-label", "Open menu");
+  }
+
+  function openMenu() {
+    toggle.setAttribute("aria-expanded", "true");
+    links.classList.add("is-open");
+    toggle.setAttribute("aria-label", "Close menu");
+  }
+
+  toggle.addEventListener("click", function () {
+    var isOpen = toggle.getAttribute("aria-expanded") === "true";
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  links.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!links.classList.contains("is-open")) return;
+    if (links.contains(event.target) || toggle.contains(event.target)) return;
+    closeMenu();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") closeMenu();
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 900) closeMenu();
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  initWaitlistForms();
+  initNavToggle();
+});
