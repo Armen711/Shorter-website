@@ -1,6 +1,6 @@
 // Progressive-enhancement handler shared by every form with class
 // "js-waitlist-form" (customer + barber). Submits via fetch so we can show
-// an inline success/error message instead of a full page reload/redirect —
+// an inline success/error message instead of a full page reload/redirect,
 // works with Formspree's JSON response format out of the box.
 function initWaitlistForms() {
   var forms = document.querySelectorAll("form.js-waitlist-form");
@@ -20,7 +20,7 @@ function initWaitlistForms() {
         if (status) {
           status.className = "form-status error";
           status.textContent =
-            "Form isn't connected yet — add your Formspree endpoint (see README).";
+            "Form isn't connected yet, add your Formspree endpoint (see README).";
         }
         return;
       }

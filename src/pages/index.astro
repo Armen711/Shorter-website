@@ -1,66 +1,23 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <title>Shorter — Haircuts, On Demand</title>
-  <meta name="description" content="Shorter is an on-demand booking app for barbers and customers. Join the waitlist — customer or barber — for early access and founder updates." />
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
 
-  <meta property="og:title" content="Shorter — Haircuts, On Demand" />
-  <meta property="og:description" content="Shorter is an on-demand booking app for barbers and customers. Join the waitlist — customer or barber — for early access and founder updates." />
-  <meta property="og:type" content="website" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
-    rel="stylesheet"
-  />
-
-  <link rel="stylesheet" href="assets/style.css" />
-</head>
-<body>
-
-  <header class="site-header">
-    <div class="wrap">
-      <a href="#top" class="brand">
-        <img src="assets/images/logo-mark-black.png" alt="" width="35" height="24" style="display:block;" />
-        <span>Shorter</span>
-      </a>
-      <nav class="site-nav">
-        <div class="site-nav-links" id="site-nav-links">
-          <a href="#customer-waitlist">Customers</a>
-          <a href="#barber-waitlist">Barbers</a>
-          <a href="#updates">Founder Updates</a>
-          <a href="#about">About</a>
-        </div>
-        <a href="#barber-waitlist" class="btn btn-primary nav-cta">
-          <span class="nav-cta-full">Join the waitlist</span>
-          <span class="nav-cta-short">Join</span>
-        </a>
-        <button
-          type="button"
-          class="nav-toggle"
-          id="nav-toggle"
-          aria-expanded="false"
-          aria-controls="site-nav-links"
-          aria-label="Open menu"
-        >
-          <span></span><span></span><span></span>
-        </button>
-      </nav>
-    </div>
-  </header>
+<BaseLayout
+  title="Shorter: Haircuts, On Demand"
+  description="Shorter is an on-demand booking app for barbers and customers. Join the waitlist, customer or barber, for early access and founder updates."
+>
+  <Nav />
 
   <section class="hero" id="top">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow">Coming to Melbourne — early 2027</span>
+        <span class="eyebrow">Coming to Melbourne, early 2027</span>
         <h1>Need a haircut right now? Shorter finds you a barber, on demand.</h1>
         <p class="lede">
           Shorter is the fastest way to find a quality barber near you and book them on
-          the spot — no walk-ins, no five different Instagram DMs, no wasted time on
+          the spot: no walk-ins, no five different Instagram DMs, no wasted time on
           booking websites only displaying slots for another time, no guessing who's free.
         </p>
         <div class="hero-ctas">
@@ -70,10 +27,10 @@
       </div>
       <div class="hero-visual">
         <div class="phone phone-back">
-          <img src="assets/images/app-barber-dashboard.png" alt="Shorter barber dashboard screen" width="404" height="1295" loading="lazy" />
+          <img src="/images/app-barber-dashboard.png" alt="Shorter barber dashboard screen" width="404" height="1295" loading="lazy" />
         </div>
         <div class="phone phone-front">
-          <img src="assets/images/app-customer-home.png" alt="Shorter customer home screen" width="404" height="863" fetchpriority="high" />
+          <img src="/images/app-customer-home.png" alt="Shorter customer home screen" width="404" height="863" fetchpriority="high" />
         </div>
       </div>
     </div>
@@ -115,7 +72,7 @@
 
       <div class="waitlist-form">
         <h3>Join the customer waitlist</h3>
-        <p class="form-sub">Takes about 30 seconds. No spam — just launch news.</p>
+        <p class="form-sub">Takes about 30 seconds. No spam, just launch news.</p>
 
         <form class="js-waitlist-form" action="https://formspree.io/f/xqernrla" method="POST">
           <input type="hidden" name="_subject" value="New Shorter customer waitlist signup" />
@@ -175,8 +132,8 @@
         <ul class="benefit-list">
           <li><span class="tick">✓</span> Priority placement and visibility at launch</li>
           <li><span class="tick">✓</span> Set your own prices, service area, and availability</li>
-          <li><span class="tick">✓</span> Keep all of your earnings — no commission, ever</li>
-          <li><span class="tick">✓</span> Work from your shop, home, or mobile — whatever fits your business</li>
+          <li><span class="tick">✓</span> Keep all of your earnings, no commission, ever</li>
+          <li><span class="tick">✓</span> Work from your shop, home, or mobile, whatever fits your business</li>
         </ul>
       </div>
 
@@ -236,7 +193,7 @@
       <div class="section-head">
         <span class="eyebrow on-light">Founder updates</span>
         <h2 style="margin-top:16px;">Building Shorter, in public</h2>
-        <p>Real progress, real timelines — no fluff. Here's what's happened so far.</p>
+        <p>Real progress, real timelines, no fluff. Here's what's happened so far.</p>
       </div>
 
       <div class="updates-list">
@@ -245,7 +202,7 @@
           <div>
             <span class="update-tag">Build</span>
             <h3>Shorter is officially in motion</h3>
-            <p>Development is underway with our build partner — and this is just the first step toward something much bigger. Curious why we're building it? <a href="#about">Read the story</a>.</p>
+            <p>Development is underway with our build partner, and this is just the first step towards something much bigger. Curious why we're building it? <a href="#about">Read the story</a>.</p>
           </div>
         </div>
         <div class="update-item">
@@ -253,7 +210,7 @@
           <div>
             <span class="update-tag">Barbers</span>
             <h3>Founding Barber outreach begins across Melbourne</h3>
-            <p>We're reaching out to the first wave of independent and mobile barbers across Metro Melbourne — with Australia-wide, then global, outreach to follow as we grow.</p>
+            <p>We're reaching out to the first wave of independent and mobile barbers across Metro Melbourne, with Australia-wide, then global, outreach to follow as we grow.</p>
           </div>
         </div>
         <div class="update-item">
@@ -261,7 +218,7 @@
           <div>
             <span class="update-tag">Waitlist</span>
             <h3>Customer and barber waitlists are live</h3>
-            <p>You're looking at it — join above to get early access and be first to hear every update as we build toward launch.</p>
+            <p>You're looking at it: join above to get early access and be first to hear every update as we build towards launch.</p>
           </div>
         </div>
         <div class="update-item">
@@ -291,7 +248,7 @@
         <p>Yet barbers still earn in almost the same way they always have.</p>
         <p>You either work in a shop, own a shop, or cut from home. Your income is still limited by your location, your roster, and your appointments.</p>
         <p>At the same time, customers are left with another problem.</p>
-        <p>If you need a haircut today—or even tonight—there's no simple way to find an available, quality barber right now. Existing booking platforms are built for future appointments, not immediate availability.</p>
+        <p>If you need a haircut today, or even tonight, there's no simple way to find an available, quality barber right now. Existing booking platforms are built for future appointments, not immediate availability.</p>
         <p>It made me ask a simple question.</p>
         <p>If drivers can go online whenever they want and earn immediately, why can't barbers?<br>
         Why can't skilled barbers make themselves available when they choose?<br>
@@ -304,34 +261,11 @@
         <p>I believe barbering deserves the same flexibility, accessibility, and technology that has transformed so many other industries.</p>
         <p>This is the future I wish existed when I was behind the chair.</p>
         <p>So I decided to build it.</p>
-        <p style="font-weight:700; color:var(--black); margin-top:28px;">We're starting with barbers — but this is just the beginning.</p>
+        <p style="font-weight:700; color:var(--black); margin-top:28px;">We're starting with barbers, but this is just the beginning.</p>
       </div>
-      <p style="font-weight:700; color:var(--black); margin-top:24px;">— Armen, Founder of Shorter</p>
+      <p style="font-weight:700; color:var(--black); margin-top:24px;">- Armen, Founder of Shorter</p>
     </div>
   </section>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <div class="footer-top">
-        <a href="#top" class="brand">
-          <img src="assets/images/logo-mark-white.png" alt="" width="35" height="24" style="display:block;" />
-          <span>Shorter</span>
-        </a>
-        <div class="footer-links">
-          <a href="#customer-waitlist">Customer waitlist</a>
-          <a href="#barber-waitlist">Founding Barber program</a>
-          <a href="#updates">Founder updates</a>
-          <a href="#about">About</a>
-          <a href="mailto:armenharoutunian98@gmail.com">Contact</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Shorter. Haircuts, on demand.</span>
-        <span>Launching first in Melbourne.</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="assets/script.js"></script>
-</body>
-</html>
+  <Footer />
+</BaseLayout>
