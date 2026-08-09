@@ -696,9 +696,23 @@ p {
   }
 
   /* Mobile nav: the inline link row is replaced by a hamburger-triggered
-     dropdown; the "Join the waitlist" CTA stays visible at all sizes. */
+     dropdown; the "Join the waitlist" CTA stays visible at all sizes, but
+     swaps to the short "Join" label here too since the full label leaves
+     no gap before the logo/hamburger on common phone widths (~390-430px). */
   .nav-toggle {
     display: flex;
+  }
+
+  .nav-cta-full {
+    display: none;
+  }
+
+  .nav-cta-short {
+    display: inline;
+  }
+
+  .site-nav {
+    gap: 12px;
   }
 
   .site-nav-links {
@@ -773,18 +787,10 @@ p {
   }
 }
 
-/* Extra-narrow phones (iPhone SE / older Android), the "Join the
-   waitlist" label wraps to two lines and collides with the logo at this
-   width, so it swaps for a shorter label instead of wrapping. */
+/* Extra-narrow phones (iPhone SE / older Android). The nav CTA label swap
+   now happens at the 900px breakpoint above, so only the remaining
+   size tweaks are needed here. */
 @media (max-width: 380px) {
-  .nav-cta-full {
-    display: none;
-  }
-
-  .nav-cta-short {
-    display: inline;
-  }
-
   .hero h1 {
     font-size: 32px;
   }
